@@ -18,6 +18,16 @@ def customer_tickets(conn, customer_id):
     Include only tickets purchased by the given customer_id.
     Order results by film title alphabetically.
     """
+    curr.con.cursor()
+    res = cur.execute
+
+    SELECT films.title , screenings.screen , tickets.price
+    FROM tickets 
+    JOIN 
+
+
+    
+    
     pass
 
 
