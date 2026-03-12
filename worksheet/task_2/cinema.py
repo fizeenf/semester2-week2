@@ -32,7 +32,7 @@ def customer_tickets(conn, customer_id):
 
     ORDER BY films.title ASC;
     """
-    return con.execute(query, (customer_id,)).fetchall()
+    return conn.execute(query, (customer_id,)).fetchall()
     
 
 
@@ -83,5 +83,5 @@ def top_customers_by_spend(conn, limit):
 
      LIMIT ? 
      """
-    return con.execute(query, (limit)).fetchall()
+    return conn.execute(query, (limit)).fetchall()
     
