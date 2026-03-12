@@ -53,8 +53,11 @@ def screening_sales(conn):
 
     LEFT JOIN tickets ON screenings.screening_id = tickets.screening_id
 
+    GROUP BY screenings.screening_id
+
     ORDER BY tickets_sold DESC;
     """
+    
     return conn.execute(query).fetchall()
 
 
@@ -83,5 +86,5 @@ def top_customers_by_spend(conn, limit):
 
      LIMIT ? 
      """
-    return conn.execute(query, (limit)).fetchall()
+    return conn.execute(query, (limit,)).fetchall()
     
