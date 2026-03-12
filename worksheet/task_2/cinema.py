@@ -11,13 +11,13 @@ import sqlite3
 
 
 def customer_tickets(conn, customer_id):
-    
+    """
     Return a list of tuples:
     (film_title, screen, price)
 
     Include only tickets purchased by the given customer_id.
     Order results by film title alphabetically.
-    
+    """
 
     query = """
     SELECT films.title , screenings.screen , tickets.price
@@ -37,13 +37,13 @@ def customer_tickets(conn, customer_id):
 
 
 def screening_sales(conn):
-    
+    """
     Return a list of tuples:
     (screening_id, film_title, tickets_sold)
 
     Include all screenings, even if tickets_sold is 0.
     Order results by tickets_sold descending.
-    
+    """
     query = """
     SELECT screenings.screening_id, films.title, COUNT(tickets.ticket_id) AS tickets_sold
 
@@ -80,7 +80,7 @@ def top_customers_by_spend(conn, limit):
      GROUP BY customer.customer_id 
 
      ORDER BY total_spent DESC
-     
+
      LIMIT ? 
      """
     return con.execute(query, (limit)).fetchall()
