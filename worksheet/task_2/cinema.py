@@ -28,7 +28,7 @@ def customer_tickets(conn, customer_id):
 
     JOIN films on screenings.film_id = films.film_id
 
-    WHERE ticket.customer_id = ? 
+    WHERE tickets.customer_id = ? 
 
     ORDER BY films.title ASC;
     """
@@ -51,7 +51,7 @@ def screening_sales(conn):
 
     JOIN films ON screenings.film_id = films.film_id 
 
-    LEFT JOIN tickets ON screenings.screening.id = tickets_screening_id
+    LEFT JOIN tickets ON screenings.screening_id = tickets.screening_id
 
     ORDER BY tickets_sold DESC;
     """
@@ -77,7 +77,7 @@ def top_customers_by_spend(conn, limit):
 
      JOIN tickets ON customers.customer_id = tickets.customer_id
 
-     GROUP BY customer.customer_id 
+     GROUP BY customers.customer_id 
 
      ORDER BY total_spent DESC
 
